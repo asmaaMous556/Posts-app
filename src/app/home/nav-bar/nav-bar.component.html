@@ -1,0 +1,34 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+   
+    <button (click)="toggleNavBar()" class="navbar-toggler"  type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item ">
+          <a class="nav-link" routerLink="/home" roterLinkActive="active" >Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"  routerLink="/profile"> My profile</a>
+        </li>
+
+        <!-- *ngIf=" notUser ; else isUser" -->
+        <li class="nav-item" *ngIf=" notUser ; else isUser" >
+            <a class="btn btn-primary" (click)="loginWithGoogle()">Log in with Google</a>
+          </li>
+          <!-- #isUser -->
+    <ng-template #isUser >  
+        <ul class="navbar-nav">
+        <li ngbDropdown class="nav-item dropdown">
+          <a class="btn btn-light" ngbDropdownToggle class="nav-link dropdown-toggle" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" > 
+            Hello {{userName}} !</a>
+            <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
+              <button class="btn btn-light" 
+               class="dropdown-item" (click)="logOut()">Log out</button>
+            </div> 
+        </li>
+        </ul>
+    </ng-template>
+      </ul>
+    </div>
+  </nav>

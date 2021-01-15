@@ -1,0 +1,31 @@
+<form nz-form  class="post-form"  #f="ngForm"  (ngSubmit)="addPost(f.value)">
+  <nz-form-item>
+    <nz-form-control >
+      <nz-input-group >
+        <input type="text" nz-input name="title" ngModel="title" placeholder="title"/>
+      </nz-input-group>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-control>
+      <!-- <nz-input-group nzPrefixIcon="lock"> -->
+        <input type="text" nz-input name="body" ngModel="body" placeholder="body" />
+      <!-- </nz-input-group> -->
+    </nz-form-control>
+  </nz-form-item>
+  
+  <button nz-button class="post-form-button post-form-margin" [nzType]="'primary'">Post</button>
+</form>
+<br/>
+
+<h3 [ngStyle]="{ margin: '16px 0' }"> News Feed
+  
+</h3>
+    <ul nz-list [nzDataSource]="posts"  nzBordered nzSize="large">
+      <li nz-list-item *ngFor="let post of posts" nzNoFlex>
+        <h5>{{userName}}</h5>
+        {{post.title}}
+        <br/>
+        {{post.body}}
+      </li>
+    </ul>
